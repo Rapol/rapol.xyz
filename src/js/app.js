@@ -2,7 +2,7 @@
 // Starting position of the mouse down action
 let position = {x: 0, y: 0};
 // Counter for iterating the array of letters
-let counter = 0;
+let letterCounter = 0;
 let minFontSize = 3;
 let letters = "There should be no boundaries to human endeavor. We are all different. However bad life may seem, there is always something you can do, and succeed at. While there's life, there is hope.";
 let colors = ['#556270', '#4ECDC4', '#C7F464', '#FF6B6B', '#C44D58'];
@@ -21,9 +21,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 canvas.addEventListener('mousemove', mouseMove, false);
-// canvas.addEventListener('mousedown', mouseDown, false);
-// canvas.addEventListener('mouseup',   mouseUp,   false);
-// canvas.addEventListener('mouseout',  mouseUp,  false);
+
 canvas.addEventListener('dblclick', doubleClick, false);
 
 window.addEventListener('resize', resizeCanvas, false);
@@ -40,13 +38,12 @@ function mouseMove(event) {
 		position.x = event.layerX;
 		position.y = event.layerY;
 	}
-	//if(mouse.down){
-	draw();
-	//}
+	draw(event);
 }
 
-function draw() {
+function draw(event) {
 	// Get new mouse position
+	// layerX and layerY get mouse position relative to the canvas and not the window
 	mouse.x = event.layerX;
 	mouse.y = event.layerY;
 	// Get distance from the last know position in pixels
@@ -54,7 +51,7 @@ function draw() {
 	// Rescale font size based on the distance travel, giving the illusion of acceleration
 	let fontSize = minFontSize + d / 2;
 	// Get next letter from the array
-	let letter = letters[counter];
+	let letter = letters[letterCounter];
 	// return last letter font size
 	let stepSize = textWidth(letter, fontSize);
 
@@ -79,9 +76,9 @@ function draw() {
 		context.restore();
 
 		// Increment counters and check arrays boundaries
-		counter++;
-		if (counter > letters.length - 1) {
-			counter = 0;
+		letterCounter++;
+		if (letterCounter > letters.length - 1) {
+			letterCounter = 0;
 		}
 		colorCounter++;
 		if (colorCounter > colors.length - 1) {
@@ -100,17 +97,6 @@ function distance(pt, pt2) {
 	let ys = pt2.y - pt.y;
 	return Math.sqrt((xs * xs) + (ys * ys));
 }
-
-// function mouseDown( event ){
-//   mouse.down = true;
-//   // Get starting point of the mouse down
-//   position.x = event.pageX;
-//   position.y = event.pageY;
-// }
-
-// function mouseUp( event ){
-//   mouse.down = false;
-// }
 
 // Double click to reset canvas
 function doubleClick(event) {
