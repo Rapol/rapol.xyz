@@ -1,27 +1,25 @@
-$color1: #556270;
-$color2: #4ECDC4;
-$color3: #C7F464;
-$color4: #FF6B6B;
-$color5: #C44D58;
-$backgroundColor: #1B1B1B;
+$gray: #556270;
+$blue: #4ECDC4;
+$green: #C7F464;
+$pink: #FF6B6B;
+$red: #C44D58;
+$black: #1B1B1B;
 
 $borderHeight: 200px;
 $baseDegree: 3deg;
 
+$nav-title-size: 3em;
+$nav-title-margin: 1.5em + $nav-title-size;
+$nav-title-padding: 10vh;
+
 body {
   overflow-x: hidden;
-  background: $backgroundColor;
+  background: $black;
 }
 
 .hero {
   width: 100%;
   height: 100vh;
-  overflow: hidden;
-}
-
-.title {
-  margin: 20vh auto;
-  width: 466px;
 }
 
 @mixin slantedBorder($bottom, $color,$degree) {
@@ -45,27 +43,77 @@ body {
   }
 }
 
+@mixin rotate($degree, $xPos, $yPos){
+  -ms-transform: rotate($degree);
+  -webkit-transform: rotate($degree);
+  transform: rotate($degree);
+  transform-origin: $xPos $yPos;
+}
+
 .first {
-  @include slantedBorder(0, $color1, $baseDegree)
+  @include slantedBorder(0, $gray, $baseDegree)
 }
 
 .second {
-  @include slantedBorder(0, $color2, $baseDegree * 2)
+  @include slantedBorder(0, $blue, $baseDegree * 2)
 }
 
 .third {
-  @include slantedBorder(0, $color3, $baseDegree * 3)
+  @include slantedBorder(0, $green, $baseDegree * 3)
 }
 
 .fourth {
-  @include slantedBorder(0, $color4, $baseDegree * 4)
+  @include slantedBorder(0, $pink, $baseDegree * 4)
 }
 
 .fifth {
-  @include slantedBorder(0, $color5, $baseDegree * 5)
+  @include slantedBorder(0, $red, $baseDegree * 5)
 }
 
-#text-canvas{
-  background: #1B1B1B;
-  cursor: crosshair;
+.nav-titles {
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.left-title-container{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  @include rotate(90deg, left, top);
+  margin-left: 4.5em;
+  width: 100vh;
+  p {
+    text-align: center;
+    font-size: 3em;
+    padding-right: $nav-title-padding;
+    a{
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+.right-title-container{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  @include rotate(-90deg, right, top);
+  width: 100vh;
+  margin-right: $nav-title-margin;
+  p {
+    text-align: center;
+    font-size: $nav-title-size;
+    padding-left: $nav-title-padding;
+    a{
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+#hero-canvas {
+  position: absolute;
+  top: 0px;
 }

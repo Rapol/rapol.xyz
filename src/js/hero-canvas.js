@@ -26,8 +26,8 @@
 	// Bump constants
 	const BUMP_RADIUS = 4;
 	const BUMP_WIDTH = BUMP_RADIUS * 2;
-	const BUMP_MIN_RATIO = 1/16;
-	const BUMP_MAX_RATIO = 1/3;
+	const BUMP_MIN_RATIO = 1/32;
+	const BUMP_MAX_RATIO = 1/8;
 	let BUMP_MAX_HEIGHT = canvas.height * BUMP_MAX_RATIO;
 	let BUMP_MIN_HEIGHT = canvas.height * BUMP_MIN_RATIO;
 

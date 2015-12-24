@@ -1,14 +1,14 @@
 'use strict';
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 
 const sassDir = "./src/sass/**/*.scss";
 const jsDir = "./src/js/**/*.js";
 
 // Default Task
-gulp.task('default', ['watch, sass, bable']);
+gulp.task('default', ['watch', 'sass', 'babel']);
 
 gulp.task('sass', () => {
 	gulp.src(sassDir)
@@ -16,7 +16,7 @@ gulp.task('sass', () => {
 		.pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task('bable', () => {
+gulp.task('babel', () => {
 	return gulp.src(jsDir)
 		.pipe(babel({
 			presets: ['es2015']
@@ -26,5 +26,5 @@ gulp.task('bable', () => {
 
 gulp.task('watch', () => {
 	gulp.watch(sassDir, ['sass']);
-	gulp.watch(jsDir, ['bable']);
+	gulp.watch(jsDir, ['babel']);
 });
