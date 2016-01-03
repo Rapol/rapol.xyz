@@ -5,13 +5,15 @@ $pink: #FF6B6B;
 $red: #C44D58;
 $black: #1B1B1B;
 
+$breakpoint-mobile: 580px;
+
 $borderHeight: 200px;
 $baseDegree: 3deg;
 
 $base-font-size: 12px;
 $text-color: #fff;
 
-$nav-title-size: 3em;
+$nav-title-size: 2.5em;
 $nav-title-margin: 2em + $nav-title-size;
 $nav-title-padding: 10vh;
 
@@ -110,17 +112,26 @@ body {
   padding-bottom: $nav-title-padding;
   font-size: $hero-font-size;
   color: $text-color;
-
+  text-align: center;
+  &:before, &:after{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 10vw;
+    height:8px;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+  }
 }
 
-#hero-title span{
-  padding: 0 15px;
-  position: relative;
-  z-index: 1;
+@media (max-width: $breakpoint-mobile) {
+  #hero-title {
+    top: 13%;
+  }
 }
 
 .centered {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -129,4 +140,5 @@ body {
 #hero-canvas {
   position: absolute;
   top: 0px;
+  z-index: -1;
 }

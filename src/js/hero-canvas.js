@@ -16,10 +16,11 @@
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
 
-	let requestAnimationFrame = window.requestAnimationFrame ||
+	const requestAnimationFrame = window.requestAnimationFrame ||
 		window.mozRequestAnimationFrame ||
 		window.webkitRequestAnimationFrame ||
 		window.msRequestAnimationFrame;
+	const fps = 35;
 
 	window.addEventListener('resize', resizeCanvas, false);
 
@@ -93,8 +94,10 @@
 		for (let i = 0; i < bumps.length; i++) {
 			bumps[i].update();
 		}
-		// sweet 60fps (maybe)
-		requestAnimationFrame(updateCanvas);
+		// Manage fps
+		setTimeout(function() {
+			requestAnimationFrame(updateCanvas);
+		}, 1000 / fps);
 	}
 
 	// Resize canvas based on the size of the window, this resets the canvas
