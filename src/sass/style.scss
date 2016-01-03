@@ -8,13 +8,22 @@ $black: #1B1B1B;
 $borderHeight: 200px;
 $baseDegree: 3deg;
 
+$base-font-size: 12px;
+$text-color: #fff;
+
 $nav-title-size: 3em;
-$nav-title-margin: 1.5em + $nav-title-size;
+$nav-title-margin: 2em + $nav-title-size;
 $nav-title-padding: 10vh;
+
+$hero-font-size: 5em;
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:700,200);
 
 body {
   overflow-x: hidden;
   background: $black;
+  font-family: 'Raleway', sans-serif;
+  font-size: $base-font-size;
 }
 
 .hero {
@@ -43,31 +52,28 @@ body {
   }
 }
 
-@mixin rotate($degree, $xPos, $yPos){
+@mixin rotate($degree, $xPos, $yPos) {
   -ms-transform: rotate($degree);
   -webkit-transform: rotate($degree);
   transform: rotate($degree);
   transform-origin: $xPos $yPos;
 }
 
-.first {
-  @include slantedBorder(0, $gray, $baseDegree)
-}
-
-.second {
-  @include slantedBorder(0, $blue, $baseDegree * 2)
-}
-
-.third {
-  @include slantedBorder(0, $green, $baseDegree * 3)
-}
-
-.fourth {
-  @include slantedBorder(0, $pink, $baseDegree * 4)
-}
-
-.fifth {
-  @include slantedBorder(0, $red, $baseDegree * 5)
+@mixin nav-title($side) {
+  p {
+    text-align: center;
+    font-size: $nav-title-size;
+    @if $side == right {
+      padding-left: $nav-title-padding;
+    } @else if $side == left {
+      padding-right: $nav-title-padding;
+    }
+    a {
+      color: $text-color;
+      text-decoration: none;
+      font-weight: 200;
+    }
+  }
 }
 
 .nav-titles {
@@ -77,40 +83,47 @@ body {
   width: 100%;
 }
 
-.left-title-container{
+.title-container {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  @include rotate(90deg, left, top);
-  margin-left: 4.5em;
+  // Make width equal to the screen height because container will be
+  // rotated 90deg
   width: 100vh;
-  p {
-    text-align: center;
-    font-size: 3em;
-    padding-right: $nav-title-padding;
-    a{
-      color: white;
-      text-decoration: none;
-    }
-  }
 }
 
-.right-title-container{
-  position: absolute;
+#left-title {
+  top: 0px;
+  left: 0px;
+  margin-left: $nav-title-margin;
+  @include rotate(90deg, left, top);
+  @include nav-title(left);
+}
+
+#right-title {
   top: 0px;
   right: 0px;
-  @include rotate(-90deg, right, top);
-  width: 100vh;
   margin-right: $nav-title-margin;
-  p {
-    text-align: center;
-    font-size: $nav-title-size;
-    padding-left: $nav-title-padding;
-    a{
-      color: white;
-      text-decoration: none;
-    }
-  }
+  @include rotate(-90deg, right, top);
+  @include nav-title(right);
+}
+
+#hero-title {
+  padding-bottom: $nav-title-padding;
+  font-size: $hero-font-size;
+  color: $text-color;
+
+}
+
+#hero-title span{
+  padding: 0 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #hero-canvas {
