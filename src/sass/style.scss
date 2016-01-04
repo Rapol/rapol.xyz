@@ -14,7 +14,7 @@ $base-font-size: 12px;
 $text-color: #fff;
 
 $nav-title-size: 2.5em;
-$nav-title-margin: 2em + $nav-title-size;
+$nav-title-margin: 1em + $nav-title-size;
 $nav-title-padding: 10vh;
 
 $hero-font-size: 5em;
@@ -62,19 +62,16 @@ body {
 }
 
 @mixin nav-title($side) {
-  p {
-    text-align: center;
+  @if $side == right {
+    padding-left: $nav-title-padding;
+  } @else if $side == left {
+    padding-right: $nav-title-padding;
+  }
+  a {
     font-size: $nav-title-size;
-    @if $side == right {
-      padding-left: $nav-title-padding;
-    } @else if $side == left {
-      padding-right: $nav-title-padding;
-    }
-    a {
-      color: $text-color;
-      text-decoration: none;
-      font-weight: 200;
-    }
+    color: $text-color;
+    text-decoration: none;
+    font-weight: 200;
   }
 }
 
@@ -90,6 +87,7 @@ body {
   // Make width equal to the screen height because container will be
   // rotated 90deg
   width: 100vh;
+  text-align: center;
 }
 
 #left-title {
@@ -113,12 +111,12 @@ body {
   font-size: $hero-font-size;
   color: $text-color;
   text-align: center;
-  &:before, &:after{
+  &:before, &:after {
     content: '';
     display: inline-block;
     vertical-align: middle;
     width: 10vw;
-    height:8px;
+    height: 8px;
     border-bottom: 1px solid #fff;
     border-top: 1px solid #fff;
   }
