@@ -111,6 +111,7 @@ body {
   font-size: $hero-font-size;
   color: $text-color;
   text-align: center;
+  min-width: 474px;
   &:before, &:after {
     content: '';
     display: inline-block;
@@ -129,7 +130,7 @@ body {
 }
 
 .centered {
-  position: relative;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
