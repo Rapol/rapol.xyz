@@ -1,22 +1,24 @@
 'use strict';
 
-const gulp = require('gulp');
-const sass = require('gulp-sass');
-const babel = require('gulp-babel');
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var babel = require('gulp-babel');
 
-const sassDir = "./src/sass/**/*.scss";
-const jsDir = "./src/js/**/*.js";
+var sassSrc = "./src/scss/app.scss"
+
+var sassDir = "./src/scss/**/*.scss";
+var jsDir = "./src/js/**/*.js";
 
 // Default Task
 gulp.task('default', ['watch', 'sass', 'babel']);
 
-gulp.task('sass', () => {
-	gulp.src(sassDir)
+gulp.task('sass', function() {
+	gulp.src(sassSrc)
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task('babel', () => {
+gulp.task('babel', function(){
 	return gulp.src(jsDir)
 		.pipe(babel({
 			presets: ['es2015']
@@ -24,7 +26,7 @@ gulp.task('babel', () => {
 		.pipe(gulp.dest('./dist/js'));
 });
 
-gulp.task('watch', () => {
+gulp.task('watch', function(){
 	gulp.watch(sassDir, ['sass']);
 	gulp.watch(jsDir, ['babel']);
 });
