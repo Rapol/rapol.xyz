@@ -1,0 +1,41 @@
+@mixin slantedBorder($bottom, $color,$degree) {
+  position: absolute;
+  bottom: $bottom;
+  background: $color;
+  z-index: -1;
+  &:before {
+    background: inherit;
+    content: '';
+    display: block;
+    height: 200px;
+    width: 100vw;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    top: 0;
+    transform: skewY($degree);
+    transform-origin: 100%;
+  }
+}
+
+@mixin rotate($degree, $xPos, $yPos) {
+  -ms-transform: rotate($degree);
+  -webkit-transform: rotate($degree);
+  transform: rotate($degree);
+  transform-origin: $xPos $yPos;
+}
+
+@mixin nav-title($side) {
+  @if $side == right {
+    padding-left: $nav-title-padding;
+  } @else if $side == left {
+    padding-right: $nav-title-padding;
+  }
+  a {
+    font-size: $nav-title-size;
+    color: $text-color;
+    text-decoration: none;
+    font-weight: 200;
+  }
+}

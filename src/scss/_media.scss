@@ -1,0 +1,7 @@
+$breakpoint-mobile: 580px;
+
+@media (max-width: $breakpoint-mobile) {
+  #hero-title {
+    top: 13%;
+  }
+}
