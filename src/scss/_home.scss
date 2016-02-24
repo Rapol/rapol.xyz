@@ -1,39 +1,11 @@
-$gray: #556270;
-$blue: #4ECDC4;
-$green: #C7F464;
-$pink: #FF6B6B;
-$red: #C44D58;
-$black: #1B1B1B;
-
 $borderHeight: 200px;
 $baseDegree: 3deg;
-
-$base-font-size: 12px;
-$text-color: #fff;
 
 $nav-title-size: 2.5em;
 $nav-title-margin: 1em + $nav-title-size;
 $nav-title-padding: 10vh;
 
 $hero-font-size: 5em;
-
-@import url(https://fonts.googleapis.com/css?family=Raleway:700,200);
-
-* {
-  transition: all ease .75s;
-}
-
-body {
-  overflow: hidden;
-  background: $black;
-  font-family: 'Raleway', sans-serif;
-  font-size: $base-font-size;
-}
-
-.hero {
-  width: 100%;
-  height: 100vh;
-}
 
 .nav-titles {
   position: absolute;
@@ -44,8 +16,7 @@ body {
 
 .title-container {
   position: absolute;
-  // Make width equal to the screen height because container will be
-  // rotated 90deg
+  // Make width equal to the screen height because container will be rotated 90deg
   width: 100vh;
   height: 4em;
   text-align: center;
@@ -69,10 +40,10 @@ body {
 
 #hero-title {
   padding-bottom: $nav-title-padding;
-  font-size: $hero-font-size;
-  color: $text-color;
+  font-size: $hero-font-size;  
   text-align: center;
   min-width: 474px;
+  font-weight: 200;
   &:before, &:after {
     content: '';
     display: inline-block;
@@ -82,13 +53,6 @@ body {
     border-bottom: 1px solid #fff;
     border-top: 1px solid #fff;
   }
-}
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 #hero-canvas {

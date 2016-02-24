@@ -1,0 +1,37 @@
+$base-font-size: 12px;
+$text-color: #fff;
+
+$gray: #556270;
+$blue: #4ECDC4;
+$green: #C7F464;
+$pink: #FF6B6B;
+$red: #C44D58;
+$black: #1B1B1B;
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,200);
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: all ease .75s;
+}
+
+body {
+  overflow: hidden;
+  background: $black;
+  font-family: 'Raleway', sans-serif;  
+  font-size: $base-font-size;
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  color: $text-color;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

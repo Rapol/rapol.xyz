@@ -1,0 +1,41 @@
+.top-links ul{
+  display: block;
+  list-style-type: none;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 9999;
+  li{
+    display:inline-block;
+    padding-right:5px;
+    a{
+      color: $text-color;
+      font-size: 2em;
+    }
+  }
+}
+
+#about-title{
+  height: 100%;
+  width: 60vw;
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+
+#name {
+  padding-top: 20vh;
+  font-size: 12em;
+  line-height: 1.2em;
+  font-weight: 200;
+}
+
+#me {
+  position: relative;
+  left: 30vw;
+  top: -50px;
+  font-size: 4em;
+  color: #ddd;
+  font-weight: 400; 
+  line-height: .9em;
+}
+
