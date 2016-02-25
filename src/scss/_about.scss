@@ -1,3 +1,5 @@
+$elements: 9;
+
 .top-links ul{
   display: block;
   list-style-type: none;
@@ -34,8 +36,29 @@
   left: 30vw;
   top: -50px;
   font-size: 4em;
-  color: #ddd;
-  font-weight: 400; 
-  line-height: .9em;
+  h2{
+    font-weight: 400;
+    line-height: .9em;
+  }
+  @for $i from 1 to $elements {
+    h2:nth-child(#{$i}) {
+      color: rgb(255/$i, 255/$i, 255/$i);
+    }
+  }
+}
+
+#about-text{
+  width: 55vw;
+  height: 30vh;
+  margin-left: 22vw;
+  @include slantedBorder(40vh, $black, 2deg);
+  z-index: 3;
+}
+
+#text-canvas{
+  position: absolute;
+  top: 100vh;
+  z-index: 2;
+  background-color: $black;
 }
 

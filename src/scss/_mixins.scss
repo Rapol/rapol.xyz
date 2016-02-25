@@ -1,16 +1,16 @@
-@mixin slantedBorder($bottom, $color,$degree) {
-  position: absolute;
-  bottom: $bottom;
+@mixin slantedBorder($top, $color,$degree) {
+  position: relative;
+  top: $top;
   background: $color;
   z-index: -1;
   &:before {
     background: inherit;
     content: '';
     display: block;
+    position: relative;
     height: 200px;
-    width: 100vw;
+    width: auto;
     left: 0;
-    position: absolute;
     right: 0;
     z-index: -1;
     top: 0;
