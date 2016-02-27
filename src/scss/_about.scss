@@ -12,33 +12,30 @@ $elements: 9;
     padding-right:5px;
     a{
       color: $text-color;
-      font-size: 2em;
+      font-size: 2rem;
     }
   }
 }
 
-#about-title{
+#about-hero{
   height: 100%;
   width: 60vw;
   margin: 0 auto;
+  text-align: center;
   text-transform: uppercase;
 }
 
 #name {
-  padding-top: 20vh;
-  font-size: 12em;
-  line-height: 1.2em;
+  padding: 10vh 0;
+  font-size: 12rem;
   font-weight: 200;
 }
 
 #me {
-  position: relative;
-  left: 30vw;
-  top: -50px;
-  font-size: 4em;
   h2{
+    font-size: 5rem;
     font-weight: 400;
-    line-height: .9em;
+    line-height: 4.5rem;
   }
   @for $i from 1 to $elements {
     h2:nth-child(#{$i}) {
@@ -47,18 +44,30 @@ $elements: 9;
   }
 }
 
-#about-text{
+#disclaimer {
+  display: inline-block;
+  position: absolute;
+  font-size: 10px;
+  text-transform: lowercase;
+}
+
+#about-box{
   width: 55vw;
   height: 30vh;
-  margin-left: 22vw;
-  @include slantedBorder(40vh, $black, 2deg);
+  background: $black;
+/*   border-radius: 200px 0px 0px 200px; */
   z-index: 3;
+  display : flex;
+  align-items : center;
+    h2{
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 200;
+   }
 }
 
 #text-canvas{
-  position: absolute;
-  top: 100vh;
-  z-index: 2;
   background-color: $black;
 }
 

@@ -16,27 +16,29 @@ $black: #1B1B1B;
   transition: all ease .75s;
 }
 
-body {
-  background: $black;
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
   font-family: 'Raleway', sans-serif;  
   font-size: $base-font-size;
 }
 
-.overflow-none{
-  overflow: hidden;
+body {
+  background: $black;
 }
 
-.overflow-x{
-  overflow-x: hidden;
-}
-
-.hero {
+section {
+  position: relative;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
   color: $text-color;
 }
 
-.centered {
+.center {
   position: absolute;
   top: 50%;
   left: 50%;

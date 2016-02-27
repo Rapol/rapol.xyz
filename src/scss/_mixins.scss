@@ -26,7 +26,7 @@
   transform-origin: $xPos $yPos;
 }
 
-@mixin nav-title($side) {
+@mixin nav-title($side, $nav-title-padding, $nav-title-size, $text-color) {
   @if $side == right {
     padding-left: $nav-title-padding;
   } @else if $side == left {
