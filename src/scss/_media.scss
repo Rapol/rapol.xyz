@@ -5,23 +5,59 @@
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
-  #me{
-    position: relative;
-    top: 0px;
-    left: 0px;
+  #about-hero{
+    height: 100%;
+    width: 80vw;
+    margin: 0 auto;
+    text-transform: uppercase;
+    padding-left: 10vw;
+    text-align: left;
+  }
+
+  #name {
+    font-size: 11rem;
+  }
+
+  #me {
+    h2{
+      font-size: 4rem;
+      line-height: 4.5rem;
+    }
   }
 }
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
   #hero-title {
-    top: 13%;
+    top: 20%;
+  }
+  #name {
+    font-size: 10rem;
+    padding-top: 15vh;
+    padding-bottom: 20vh
+  }
+
+  #me {
+    h2{
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
   }
 }
 
 /* Extra Small Devices, Phones */ 
 @media only screen and (max-width : 480px) {
+  #name {
+    font-size: 5rem;
+    padding: 15vh 0;
+  }
 
+  #me {
+    h2{
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+  }
 }
 
 /* Custom, iPhone Retina */ 

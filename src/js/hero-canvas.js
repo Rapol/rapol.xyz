@@ -1,6 +1,6 @@
 "use strict";
 
-(function () {
+var Bumps = (function () {
 
 	let colors = ['#556270', '#4ECDC4', '#C7F464', '#FF6B6B', '#C44D58'];
 	let colorCounter = 0;
@@ -22,9 +22,9 @@
 	// Bump constants
 	const BUMP_RADIUS = 4;
 	const BUMP_WIDTH = BUMP_RADIUS * 2;
-	const BUMP_MIN_RATIO = 1 / 32;
-	const BUMP_MAX_RATIO = 1 / 8;
-
+	
+	let BUMP_MIN_RATIO = 1 / 32;
+	let BUMP_MAX_RATIO = 1 / 8;
 	let BUMP_MAX_HEIGHT = canvas.height * BUMP_MAX_RATIO;
 	let BUMP_MIN_HEIGHT = canvas.height * BUMP_MIN_RATIO;
 
@@ -39,7 +39,7 @@
 		this.color = color;
 
 		this.direction = Math.random() < 0.5 ? -1 : 1;
-	};
+	}
 
 	// Takes care of drawing and updating the bumps
 	Bump.prototype.update = function () {
@@ -116,11 +116,13 @@
 			bumps = createBumps(bumps[bumps.length - 1].left + BUMP_WIDTH, bumps);
 		}
 		else{
+			// Pop one or more bumps
 			bumps = popBumps(bumps);
 		}
 		canvas.width = window.innerWidth;
 	}
 
+	// Pop bumps recursively until all bumps fit in the screen
 	function popBumps(arr){
 		if(window.innerWidth + BUMP_WIDTH < arr.length * BUMP_WIDTH){
 			arr = arr.slice(0, arr.length - 1);
@@ -158,4 +160,39 @@
 	// Create bumps starting at x = 0
 	bumps = createBumps(0, []);
 	updateCanvas();
+	
+	return {
+		setBumpRatio: function(delta){
+			// Delta will be 1 or -1. Make the delta height change 1/100
+			BUMP_MIN_RATIO += delta/100;
+			BUMP_MAX_RATIO += delta/100;
+
+			BUMP_MAX_HEIGHT = window.innerHeight * BUMP_MAX_RATIO;
+			BUMP_MIN_HEIGHT = window.innerHeight * BUMP_MIN_RATIO;
+			bumps = recalculateHeight(bumps);
+		}
+	}
 })();
+
+window.addEventListener('mousewheel', wheelHandler, false);
+// Mozilla
+window.addEventListener('DOMMouseScroll', wheelHandler, false);
+
+function wheelHandler(event){
+	let delta = 0;
+	/* For IE. */
+	if (!event)
+		event = window.event;
+	/* IE/Opera. */
+	if (event.wheelDelta) {
+		delta = event.wheelDelta/120;
+	} 
+	/** Mozilla case. */
+	else if (event.detail) {
+		/** In Mozilla, sign of delta is different than in IE.
+		 * Also, delta is multiple of 3.
+		 */
+		delta = -event.detail/3;
+	}
+	Bumps.setBumpRatio(delta);
+}
